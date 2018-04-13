@@ -5,6 +5,12 @@ using UnityEngine;
 public class DragDrop : MonoBehaviour {
 
 	private Vector3 offset;
+	private Vector2 currentPos;
+
+	void Start() {
+		currentPos = gameObject.transform.position;
+		print(currentPos);
+	}
 	void OnMouseDown () {
 		//moves object in relation to the mouse drag by finding the 'offset' using camera.main.screentoworld point. The 10.0f is the distance from the cam to object
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
@@ -13,5 +19,9 @@ public class DragDrop : MonoBehaviour {
 	void OnMouseDrag() {
 		Vector3 newPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
 		transform.position = Camera.main.ScreenToWorldPoint(newPosition) + offset;
+	}
+
+	void OnMouseUp() {
+		transform.position = currentPos;
 	}
 }
