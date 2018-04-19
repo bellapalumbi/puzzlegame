@@ -5,11 +5,16 @@ using UnityEngine;
 public class DragDrop : MonoBehaviour {
 
 	private Vector3 offset;
-	private Vector2 currentPos;
+	Vector2 currentPos;
+
+	private bool hasHitElement = false;
+
+	public GameObject myShell;
 
 	void Start() {
 		currentPos = gameObject.transform.position;
 		print(currentPos);
+		myShell.SetActive(false);
 	}
 	void OnMouseDown () {
 		//moves object in relation to the mouse drag by finding the 'offset' using camera.main.screentoworld point. The 10.0f is the distance from the cam to object
@@ -21,7 +26,16 @@ public class DragDrop : MonoBehaviour {
 		transform.position = Camera.main.ScreenToWorldPoint(newPosition) + offset;
 	}
 
+	void OnCollisionExit2D(Collision2D collision)  {
+		if (collision.gameObject.tag == "Interactable") {
+			hasHitElement = true;
+			gameObject.SetActive(false);
+			myShell.SetActive(true);
+		}
+	}
 	void OnMouseUp() {
-		transform.position = currentPos;
+		if (!hasHitElement) { 
+			transform.position = currentPos; 
+		}
 	}
 }

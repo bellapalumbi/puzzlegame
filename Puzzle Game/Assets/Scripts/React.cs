@@ -4,34 +4,29 @@ using UnityEngine;
 
 public class React : MonoBehaviour {
 
-	private Burn Burn;
-	//create new object of type Burn script called Burn
-	private Freeze Freeze;
-	void Start () {
-		Burn = gameObject.GetComponent<Burn>();
-		//stores the Burn script on this object (existing or not)
-		//on Burn
-		Freeze = gameObject.GetComponent<Freeze>();
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+	public bool hasBeenHitWithElement = false;
 	void OnCollisionEnter2D(Collision2D collider)  {
+
+		hasBeenHitWithElement = true;
+
 		if(collider.gameObject.tag == "ThisIsFire") {
 			print("Fire has hit me, " + gameObject.name);
 			if (gameObject.GetComponent<Burn>() != null) {
-				gameObject.GetComponent<Burn>();
+				print("I, " + gameObject.name + "have the Burn script");
+				gameObject.GetComponent<Burn>().BurnSelf();
 			} 
+			
+
 		}
 		if(collider.gameObject.tag == "ThisIsIce") {
 			print("Ice has hit me, " + gameObject.name);
 			if (gameObject.GetComponent<Freeze>() != null) {
-				gameObject.GetComponent<Freeze>();
+				print("I, " + gameObject.name + "have the Freeze script");
+				gameObject.GetComponent<Freeze>().FreezeSelf();
+				
 			} 
 		}
+		//collider.gameObject.transform.position = collider.gameObject.GetComponent<DragDrop>().currentPos;
+		//should move the element back to it's original position after it affects a thing
 	}
 }

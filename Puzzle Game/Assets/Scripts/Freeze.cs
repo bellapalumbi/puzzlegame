@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Freeze : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public void FreezeSelf() {
+		print("I, " + gameObject.name + " am freezing");
 	}
 }
