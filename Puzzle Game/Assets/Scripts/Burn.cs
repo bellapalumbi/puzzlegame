@@ -12,13 +12,21 @@ public class Burn : MonoBehaviour {
 	void Start() {
 		currentPos = gameObject.transform.position;
 	}
+
+	
 	public void BurnSelf() {
 		if(!isSmoke) {
 			print("I, " + gameObject.name + " am burning");
 			GameObject smoke = (GameObject)Instantiate(Resources.Load("Smoke"), new Vector2(currentPos.x-3, currentPos.y-1), new Quaternion(40,40,0,1));
 			print ("Smoke instantiated.");
 			isSmoke = true;
-			Destroy(smoke, 10);
+			Destroy(smoke, 5);
 		}
+		Invoke("DisappearObject", 5);
+		
+
+	}
+	void DisappearObject() {
+		gameObject.SetActive(false);
 	}
 }

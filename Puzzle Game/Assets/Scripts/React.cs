@@ -26,7 +26,17 @@ public class React : MonoBehaviour {
 				
 			} 
 		}
-		//collider.gameObject.transform.position = collider.gameObject.GetComponent<DragDrop>().currentPos;
-		//should move the element back to it's original position after it affects a thing
+		
+		if(collider.gameObject.tag == "ThisIsAcid") {
+			print("Acid has hit me, " + gameObject.name);
+			if (gameObject.GetComponent<Dissolve>() != null) {
+				print("I, " + gameObject.name + "have the Dissolve script");
+				gameObject.GetComponent<Dissolve>().DissolveSelf();
+				
+			} 
+		}
+	
 	}
+
+
 }
