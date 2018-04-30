@@ -6,11 +6,13 @@ public class Burn : MonoBehaviour {
 
 	public bool isSmoke = false;
 	
+	public GameObject fire;
 	public ParticleSystem Smoke;
 	private Vector2 currentPos;
 
 	void Start() {
 		currentPos = gameObject.transform.position;
+		//fire = GameObject.Find("fire");
 	}
 
 	
@@ -23,7 +25,7 @@ public class Burn : MonoBehaviour {
 			Destroy(smoke, 5);
 		}
 		Invoke("DisappearObject", 5);
-		
+		fire.SetActive(false);
 
 	}
 	void DisappearObject() {

@@ -9,12 +9,10 @@ public class DragDrop : MonoBehaviour {
 
 	private bool hasHitElement = false;
 
-	public GameObject myShell;
 
 	void Start() {
 		currentPos = gameObject.transform.position;
 		print(currentPos);
-		myShell.SetActive(false);
 	}
 	void OnMouseDown () {
 		//moves object in relation to the mouse drag by finding the 'offset' using camera.main.screentoworld point. The 10.0f is the distance from the cam to object
@@ -30,7 +28,6 @@ public class DragDrop : MonoBehaviour {
 		if (collision.gameObject.tag == "Interactable") {
 			hasHitElement = true;
 			gameObject.SetActive(false);
-			myShell.SetActive(true);
 		}
 	}
 	void OnMouseUp() {
