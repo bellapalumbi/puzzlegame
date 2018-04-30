@@ -22,9 +22,9 @@ public class Burn : MonoBehaviour {
 			GameObject smoke = (GameObject)Instantiate(Resources.Load("Smoke"), new Vector2(currentPos.x-3, currentPos.y-1), new Quaternion(40,40,0,1));
 			print ("Smoke instantiated.");
 			isSmoke = true;
-			Destroy(smoke, 5);
+			//Destroy(smoke, 5);
 		}
-		Invoke("DisappearObject", 5);
+		//Invoke("DisappearObject", 5);
 		fire.SetActive(false);
 
 	}
