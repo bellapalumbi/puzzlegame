@@ -15,8 +15,8 @@ public class Dissolve : MonoBehaviour {
 	}
 	public void DissolveSelf() {
 		print("I, " + gameObject.name + " am dissolving.");
-		Invoke("DisappearObject", 3);
-		Invoke("ChangeSprite", 3);
+		Invoke("DisappearObject", 1.5f);
+		Invoke("ChangeSprite", 1.5f);
 		acid.SetActive(false);
 	}
 
